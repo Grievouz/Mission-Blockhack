@@ -4,11 +4,11 @@ import dispatcher from "../dispatcher";
 class AppStore extends  EventEmitter{
 
     state: States;
-    title: string;
+    title: string = "Initializing";
 
     constructor(){
         super();
-        this.title = "Initializing";
+        this.title;
     }
 
     public getTitle(): string{
@@ -39,14 +39,11 @@ class AppStore extends  EventEmitter{
 }
 
 export enum States{
-    CheckCookie,
-    CheckCookieFailed,
+    Check,
+    CheckFailed,
 
-    CheckAccount,
-    CheckAccountFailed,
-
-    CreateAccount,
-    CreateAccountFailed,
+    Create,
+    CreateFailed,
 
     LoadSales,
 }

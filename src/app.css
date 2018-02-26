@@ -31,23 +31,115 @@ body::-webkit-scrollbar-thumb {
     }
 }
 
-.startState{
+.stateCon{
     width: 100%;
     font-size: 5vh;
     bottom: 30%;
     text-align: center;
-    margin-top: 2.5%;
-    font-family: 'Roboto', Arial !important;
+    margin-top: 1%;
     color: grey;
     font-weight: 100;
 }
 
-@media screen and (max-width:500px) {
-    .startState{
-        font-size: 10vw;
-    }
-}
-
 .spinnerContainer{
     margin-left: calc(50% - 33px);
+}
+
+#setupContainer{
+    display: flex;
+    flex-flow: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: stretch;
+    height: 53px;
+}
+
+#regButton{
+    background: transparent;
+    border: 3px #212529 solid;
+    font-family: 'Elianto';
+    font-size: 30px;
+    margin-right: 5px;
+    outline: none;
+    height: 100%;
+    cursor: pointer;
+}
+
+#regButton:hover{
+    background: #212529;
+    outline: #212529;
+    color: white;
+}
+
+#reloadButton {
+    background: transparent;
+    border: 3px #212529 solid;
+    margin-left: 5px;
+    outline: none;
+    height: 53px;
+    width: 53px;
+    cursor: pointer;
+}
+
+#reloadButton:hover {
+    background: #212529;
+    outline: #212529;
+    color: white;
+}
+
+#reloadButton:hover > svg > path {
+    fill: white;
+}
+
+#reloadButton > svg{
+    width: 100%;
+    margin-bottom: -4px;
+}
+
+.unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#messageContainer{
+    color: red;
+    font-family: Roboto;
+    font-weight: lighter;
+    width: 100%;
+    font-size: 3vh;
+    bottom: 30%;
+    text-align: center;
+    margin-top: 1%;
+}
+
+@media screen and (max-width:500px) {
+    .stateCon{
+        font-size: 10vw;
+    }
+
+    #regButton{
+        font-size: 6vw;
+    }
+
+    #reloadButton{
+        height: 10.6vw;
+    }
+
+    #reloadButton > svg{
+        height: 100%;
+    }
+
+    #setupContainer{
+        height: fit-content;
+    }
+
+
+    #messageContainer{
+        font-size: 5vw;
+    }
+
 }

@@ -1,18 +1,18 @@
-import "./cardsList.css";
+import "./sales.css";
 import * as React from "react";
 import {LoyalityProgram} from "./loyalify"
 import * as Cookies from "es-cookie";
 import * as StellarSdk from "stellar-sdk";
 import { Card, CardImg, CardText, CardBody,CardTitle, CardSubtitle, Row, Col, Button } from "reactstrap";
 
-class CardList extends React.Component<{
+class Sales extends React.Component<{
 
 }, {
     programsList: JSX.Element[]
 }> {
 
     private programs: LoyalityProgram[];
-    private static list: CardList;
+    private static list: Sales;
     private tokenBalances: {[id: string]: string} = {};
     private currentLayout: number = -1;
 
@@ -20,6 +20,10 @@ class CardList extends React.Component<{
         super(props);
 
         this.state = {programsList: []}
+    }
+
+    public static getSaleProgramms(){
+
     }
 
     private mounted: boolean = false;
@@ -62,9 +66,9 @@ class CardList extends React.Component<{
         var server = new StellarSdk.Server('https://horizon-testnet.stellar.org');
 
         Cookies.set("balances", JSON.stringify({}));
-        CardList.list = this;
+        Sales.list = this;
         server.loadAccount(pair.publicKey()).then(function (account) {
-            CardList.list.createListItems(account, layout);
+            Sales.list.createListItems(account, layout);
         });
 
     }
@@ -165,4 +169,4 @@ class CardList extends React.Component<{
 }
 
 
-export default CardList;
+export default Sales;
