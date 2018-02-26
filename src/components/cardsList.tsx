@@ -1,9 +1,9 @@
 import "./cardsList.css";
 import * as React from "react";
 import {LoyalityProgram} from "./loyalify"
-import * as Cookies from 'es-cookie';
+import * as Cookies from "es-cookie";
 import * as StellarSdk from "stellar-sdk";
-import { Card, CardImg, CardText, CardBody,CardTitle, CardSubtitle, Row, Col, Button } from 'reactstrap';
+import { Card, CardImg, CardText, CardBody,CardTitle, CardSubtitle, Row, Col, Button } from "reactstrap";
 
 class CardList extends React.Component<{
 
