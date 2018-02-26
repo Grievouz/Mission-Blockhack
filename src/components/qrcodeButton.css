@@ -1,0 +1,35 @@
+.qrButton{
+    position: fixed;
+
+    bottom: 15px;
+    left: 15px;
+    height: 100px;
+    width: 100px;
+    background-color: white;
+    box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.2);
+}
+
+
+.btn {
+    outline: none;
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+}
+
+.btn:after{
+    background-color: lightgray !important;
+    outline: none;
+}
+
+.btn:hover{
+    background-color: lightgray !important;
+    outline: none;
+}

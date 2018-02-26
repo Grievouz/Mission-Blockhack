@@ -1,0 +1,172 @@
+.listContainer{
+    background-color: #42A5F5;
+}
+
+.card-body img{
+    object-fit: contain;
+    float: left;
+}
+
+.card{
+    width: 90vw;
+    margin-left: 5vw;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+
+    box-shadow: 3px 3px 8px 0px rgba(0, 0, 0, 0.2);
+}
+
+#cardsContainerOne .flexContainer{
+    display: flex;
+}
+#cardsContainerOne .contentContainer{
+    width: calc(40vw + 10%)!important;
+
+    margin-left: 15px;
+}
+#cardsContainerOne .contentContainer h6{
+    font-size: 30px;
+}
+#cardsContainerOne .contentContainer p{
+    font-size: 20px;
+}
+#cardsContainerOne .btnContainer{
+    width: 12vw;
+    display: block;
+}
+#cardsContainerOne .btnContainer Button{
+    float: right;
+    height: 230px;
+    width: 100% !important;
+    max-width: 130px;
+    background-color: #c5c5c5 !important;
+    box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.24);
+    border-color: #c5c5c5;
+}
+#cardsContainerOne .btnContainer Button img{
+    width: 100%;
+}
+#cardsContainerOne .btnContainer Button:after{
+    background-color: black !important;
+    border-color: black !important;
+    outline: none;
+}
+#cardsContainerOne .btnContainer Button:hover{
+    background-color: black !important;
+    border-color: black !important;
+    outline: none;
+    box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.53);
+}
+
+
+#cardsContainerTwo .contentContainer h6{
+    font-size: 30px;
+}
+#cardsContainerTwo .heroImage{
+    height: 100%;
+
+}
+#cardsContainerTwo .contentContainer p{
+    font-size: 20px;
+    text-align: justify-all;
+}
+#cardsContainerTwo .contentContainer{
+    margin-left: 30%;
+}
+#cardsContainerTwo .btnContainer Button{
+    margin-top: 20px;
+    width: 100%;
+    height: 80px;
+    align-items: center;
+}
+#cardsContainerTwo .btnContainer Button img{
+    height: 100%;
+    width: 100%;
+}
+
+#cardsContainerThree .heroImage{
+    width: 100%;
+    height: 200px;
+}
+#cardsContainerThree .contentContainer h6{
+    font-size: 30px;
+    text-align: center;
+    margin-top: 15px;
+}
+#cardsContainerThree .contentContainer p{
+    font-size: 20px;
+    text-align: justify-all;
+}
+#cardsContainerThree .btnContainer Button{
+    margin-top: 20px;
+    width: 100%;
+    height: 60px;
+    align-items: center;
+}
+#cardsContainerThree .btnContainer Button img{
+    height: 100%;
+    width: 100%;
+}
+#cardsContainerThree .vendorsContainer{
+    width: 100%;
+}
+#cardsContainerThree .vendorImgsContainer{
+    width: 100%;
+}
+
+.vendorsContainer{
+    float: bottom;
+}
+
+i{
+    font-size: 18px;
+    color: #ff001b;
+    font-weight: 400;
+}
+
+.vendorImgsContainer{
+    width: 40vw;
+
+    height: 70px !important;
+    overflow-x: auto;
+    overflow-y: hidden;
+    display: inline-flex;
+}
+.vendorImgsContainer::-webkit-scrollbar {
+    /* just for tweeking */
+    width: 15px;
+    background: #d0d0d0;
+}
+
+.vendorImgsContainer::-webkit-scrollbar-thumb {
+    /* just for tweeking */
+    border-radius: 10px;
+    background-color: #787878;
+}
+
+.vendorImgsContainer img{
+    margin-top: 5px;
+    height: 60px;
+    padding: 5px;
+}
+
+.heroImage{
+    alignment: center;
+}
+
+.btnContainer Button{
+    background-color: #c5c5c5 !important;
+    box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.24);
+    border-color: #c5c5c5;
+}
+ .btnContainer Button:after{
+    background-color: black !important;
+    border-color: black !important;
+    outline: none;
+}
+ .btnContainer Button:hover{
+    background-color: black !important;
+    border-color: black !important;
+    outline: none;
+    box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.53);
+}

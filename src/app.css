@@ -1,0 +1,53 @@
+body {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+body::-webkit-scrollbar {
+    /* just for tweeking */
+    width: 15px;
+
+    background: #d0d0d0;
+}
+
+body::-webkit-scrollbar-thumb {
+    /* just for tweeking */
+    border-radius: 10px;
+    background-color: #787878;
+}
+
+.header{
+    width: 100%;
+    margin-top: 30vh;
+    font-size: 10vh;
+    bottom: 60%;
+    text-align: center;
+    font-family: 'Elianto' !important;
+}
+
+@media screen and (max-width:500px) {
+    .header{
+        font-size: 15vw;
+    }
+}
+
+.startState{
+    width: 100%;
+    font-size: 5vh;
+    bottom: 30%;
+    text-align: center;
+    margin-top: 2.5%;
+    font-family: 'Roboto', Arial !important;
+    color: grey;
+    font-weight: 100;
+}
+
+@media screen and (max-width:500px) {
+    .startState{
+        font-size: 10vw;
+    }
+}
+
+.spinnerContainer{
+    margin-left: calc(50% - 33px);
+}
