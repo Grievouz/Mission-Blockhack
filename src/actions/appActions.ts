@@ -6,3 +6,10 @@ export function updateTitle(title: string){
         title
     });
 }
+
+export function updateState(state: string){
+    dispatcher.dispatch({
+        type: "UPDATE_STATE",
+        state
+    });
+}

@@ -34,6 +34,9 @@ class AppStore extends  EventEmitter{
             case "UPDATE_TITLE":{
                 this.updateTitle(action.title)
             }
+            case "UPDATE_STATE":{
+                this.updateState(action.state as States)
+            }
         }
     }
 }
@@ -46,6 +49,7 @@ export enum States{
     CreateFailed,
 
     LoadSales,
+    Finished
 }
 
 const appStore = new AppStore();

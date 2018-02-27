@@ -4,14 +4,15 @@ import {LoyalityProgram} from "./loyalify"
 import * as Cookies from "es-cookie";
 import * as StellarSdk from "stellar-sdk";
 import { Card, CardImg, CardText, CardBody,CardTitle, CardSubtitle, Row, Col, Button } from "reactstrap";
+import AppStore, {States} from "../stores/appStore";
 
 class Sales extends React.Component<{
-
+    pair
 }, {
     programsList: JSX.Element[]
 }> {
 
-    private programs: LoyalityProgram[];
+    private static saleProgramms: LoyalityProgram[];
     private static list: Sales;
     private tokenBalances: {[id: string]: string} = {};
     private currentLayout: number = -1;
@@ -22,8 +23,16 @@ class Sales extends React.Component<{
         this.state = {programsList: []}
     }
 
-    public static getSaleProgramms(){
+    public static async getSalePrograms(){
+        const xHttp = new XMLHttpRequest();
+        xHttp.open("GET", "http://talesofapirate.com:8000/api/programs", true);
+        xHttp.send( null );
+        xHttp.onreadystatechange = function() {
+                Sales.saleProgramms = JSON.parse(xHttp.responseText) as LoyalityProgram[];
+                console.log(xHttp.responseText)
+                AppStore.updateState(States.Finished);
 
+        };
     }
 
     private mounted: boolean = false;
@@ -57,23 +66,11 @@ class Sales extends React.Component<{
 
 
     public initListItems(layout: number){
-        const xHttp = new XMLHttpRequest();
-        xHttp.open("GET", "http://talesofapirate.com:8000/api/programs", false);
-        xHttp.send( null );
-        this.programs = JSON.parse(xHttp.response) as LoyalityProgram[];
 
-        const pair = StellarSdk.Keypair.fromSecret(Cookies.get("secret"));
-        var server = new StellarSdk.Server('https://horizon-testnet.stellar.org');
-
-        Cookies.set("balances", JSON.stringify({}));
-        Sales.list = this;
-        server.loadAccount(pair.publicKey()).then(function (account) {
-            Sales.list.createListItems(account, layout);
-        });
 
     }
 
-    public createListItems(account: any, layout:number){
+    /*public createListItems(account: any, layout:number){
 
 
         let balances: {[id: string]: string} = {};
@@ -84,12 +81,18 @@ class Sales extends React.Component<{
 
         let items: JSX.Element[] = [];
 
-        for (let i = 0; i < this.programs.length; i++){
+        for (let i = 0; i < this.saleProgramms.length; i++){
 
             let companyImgs: JSX.Element[] = [];
-            for(let j = 0; j < this.programs[i].companies.length; j++){
-                var url: string = "./logos/" + this.programs[i].companies[j] + ".png";
-                companyImgs.push(<img src={url} alt={this.programs[i].companies[j]}/>)
+            for(let j = 0; j < this.] = [];
+
+            for (let i = 0; i < this.saleProgramms[i].companies.length; j++){
+                var url: string = "./logos/" + this.] = [];
+
+                for (let i = 0; i < this.saleProgramms[i].companies[j] + ".png";
+                companyImgs.push(<img src={url} alt={this.] = [];
+
+                    for (let i = 0; i < this.saleProgramms[i].companies[j]}/>)
             }
             const id = i.toString()
 
@@ -123,7 +126,7 @@ class Sales extends React.Component<{
             programsList: items
         });
         this.tokenBalances = balances;
-    }
+    }*/
 
     private sleep (time) {
         return new Promise((resolve) => setTimeout(resolve, time));
@@ -131,11 +134,11 @@ class Sales extends React.Component<{
 
     private async listedBtn_Click(sender: HTMLButtonElement){
         const id:number = parseInt(sender.id);
-        if(!this.tokenBalances[this.programs[id].token]){
+        if(!this.tokenBalances[Sales.saleProgramms[id].token]){
             const pair = StellarSdk.Keypair.fromSecret(Cookies.get("secret"));
-            const asset = new StellarSdk.Asset(this.programs[id].token, this.programs[id].address)
+            const asset = new StellarSdk.Asset(Sales.saleProgramms[id].token, Sales.saleProgramms[id].address)
             const server = new StellarSdk.Server('https://horizon-testnet.stellar.org');
-            const source = this.programs[id].address;
+            const source = Sales.saleProgramms[id].address;
             await server.loadAccount(pair.publicKey())
                 .then(function(receiver) {
                     var transaction = new StellarSdk.TransactionBuilder(receiver)
@@ -153,7 +156,7 @@ class Sales extends React.Component<{
 
 
         }else{
-            window.location.href=this.programs[id].shop;
+            window.location.href=Sales.saleProgramms[id].shop;
         }
 
 

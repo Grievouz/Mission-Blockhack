@@ -16,6 +16,9 @@ class App extends React.Component<{},
         content: JSX.Element[];
     }> {
 
+    private pair;
+    private sale: Sales;
+    private qrcode: QrCodeButton;
     private stellarServer = new StellarSdk.Server('https://horizon-testnet.stellar.org');
 
     constructor(props){
@@ -40,43 +43,42 @@ class App extends React.Component<{},
         });
         AppStore.on("updateState", () => {
             console.log(AppStore.getState());
+
             switch (AppStore.getState()){
                 case States.Check:{
                     AppStore.updateTitle("Checking");
-                    try{
-                        this.checkSettings();
-                    }catch {
-                        AppStore.updateState(States.CheckFailed);
-                    }
+                    this.checkSettings();
                     break;
                 }
                 case States.CheckFailed:{
-                    this.showSetUp("Check failed");
+                    this.showSetUp();
                     break;
                 }
                 case States.Create:{
-                    try {
-                        AppStore.updateTitle("Creating account");
-                        this.createAccount();
-                    }catch {
-                        AppStore.updateState(States.CreateFailed);
-                    }
+                    AppStore.updateTitle("Creating account");
+                    this.createAccount();
                     break;
                 }
                 case States.CreateFailed:{
-                    this.showSetUp("Create failed");
+                    AppStore.updateState(States.Create);
                     break;
                 }
                 case States.LoadSales:{
+                    this.pair = StellarSdk.Keypair.fromSecret(Cookies.get("stellar-secret"))
                     AppStore.updateTitle("Loading sales");
-                    Sales.getSaleProgramms();
-                    /*this.setState({
-                        content: [
-                            <Sales/>,
-                            <QrCodeButton/>
-                        ]
-                    })*/
+                    this.sale = new Sales(null);
+                    this.qrcode = new QrCodeButton(null);
+                    Sales.getSalePrograms();
                     break;
+                }
+                case States.Finished:{
+                    this.setState({
+                        content: [
+
+                            this.sale.render(),
+                            this.qrcode.render()
+                        ]
+                    });
                 }
             }
         });
@@ -84,7 +86,7 @@ class App extends React.Component<{},
         AppStore.updateState(States.Check);
     }
 
-    private showSetUp(message: string = ""){
+    private showSetUp(){
         this.setState({
             content: [
                 <div id={"setupContainer"}>
@@ -101,9 +103,6 @@ class App extends React.Component<{},
                         </svg>
                     </button>
                 </div>,
-                <div id={"messageContainer"}>
-                    <i>{message}</i>
-                </div>
             ]
         })
     }

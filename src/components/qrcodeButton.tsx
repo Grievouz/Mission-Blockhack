@@ -7,12 +7,20 @@ import { QRCode } from 'react-qr-svg';
 import { Card, CardImg, CardText, CardBody,CardTitle, CardSubtitle, Button } from 'reactstrap';
 import Popup from 'react-popup';
 
-class QrCodeButton extends React.Component<{}, {}> {
+class QrCodeButton extends React.Component<{
+    pair
+}, {}> {
+
+    private pair: string;
+
+    constructor(props){
+        super(props);
+    }
 
     render() {
         return(
             <Button onClick={() => this.triggerQr()} className={"qrButton btn"}>
-                <img src="./svg s/qr-code.svg"></img>
+                <img src="./svgs/qr-code.svg"></img>
             </Button>
         );
     }
