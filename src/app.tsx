@@ -10,6 +10,7 @@ import * as Spinner  from "react-spinkit";
 import AppStore, {States} from "./stores/appStore"
 import * as AppActions from "./actions/appActions"
 import * as LoyaltyActions from "./actions/loyaltyAction"
+import {LoyalityProgram} from "./components/loyalify";
 
 class App extends React.Component<{},
     {

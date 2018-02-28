@@ -72,7 +72,7 @@ body::-webkit-scrollbar-thumb {
 .regButton:hover{
     background: #212529;
     outline: #212529;
-    color: white;
+    color: whitesmoke;
 }
 
 #botContainer{
@@ -100,7 +100,7 @@ body::-webkit-scrollbar-thumb {
 .delButton:hover{
     background: #d00000;
     outline: #d00000;
-    color: white;
+    color: whitesmoke;
 }
 
 .delButton > svg{
@@ -116,10 +116,10 @@ body::-webkit-scrollbar-thumb {
  }
 
 .delButton:hover > svg > rect{
-    fill: white;
+    fill: whitesmoke;
 }
 .delButton:hover > svg > path{
-    fill: white;
+    fill: whitesmoke;
 }
 
 
@@ -134,11 +134,12 @@ body::-webkit-scrollbar-thumb {
 
 @media screen and (max-width:500px) {
     .mark{
-        font-size: 10vw;
+        font-size: 17vw;
+
     }
 
     #loayaltyList > .mark{
-        font-size: 15vw;
+        font-size: 17vw;
     }
 
     .regButton{

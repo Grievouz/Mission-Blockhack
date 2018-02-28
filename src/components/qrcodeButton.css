@@ -11,11 +11,18 @@
     vertical-align: middle;
     border: 5px solid #212529;
     box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.78);
+    border-radius: 4px;
+
+    animation-duration: 3s;
 }
 
 
 #qrButton:hover{
     box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.4);
-    bottom: 11px;
-    left: 19px;
+    -webkit-transform: translate(4px, 4px);
+    -moz-transform: translate(4px, 4px);
+    -ms-transform: translate(4px, 4px);
+
+    -o-transform: translate(4px, 4px);
+    transform: translate(4px, 4px);
 }

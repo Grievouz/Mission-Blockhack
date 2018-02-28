@@ -4,6 +4,7 @@ import {LoyalityProgram} from "./loyalify"
 import * as StellarSdk from "stellar-sdk";
 import * as LoyaltyActions from "../actions/loyaltyAction";
 import LoyaltyStore from "../stores/loyaltyStore";
+import * as Spinner  from "react-spinkit";
 
 class LoyaltyList extends React.Component<{
     pair
@@ -17,7 +18,7 @@ class LoyaltyList extends React.Component<{
     constructor(props) {
         super(props);
 
-        this.state = {items: [<div>Loading...</div>]};
+        this.state = {items: []};
 
 
         LoyaltyStore.on("updatePrograms", () => {
@@ -30,7 +31,6 @@ class LoyaltyList extends React.Component<{
         });
         this.requestLoyalityPrograms();
     }
-
 
     private async requestLoyalityPrograms(){
         const xHttp = new XMLHttpRequest();
@@ -68,8 +68,8 @@ class LoyaltyList extends React.Component<{
                                 <div className={"header"}>
                                     {this.loyalityPrograms[i].name}
                                 </div>
-                                <div className={"amount"}>
-                                    {(this.balances[this.loyalityPrograms[i].token] ? this.balances[this.loyalityPrograms[i].token] : "0") + " x " + this.loyalityPrograms[i].token}
+                                <div className={this.balances[this.loyalityPrograms[i].token] ? "amount" : "amount red"}>
+                                    {this.balances[this.loyalityPrograms[i].token] ? this.balances[this.loyalityPrograms[i].token] + " x " + this.loyalityPrograms[i].token : "Not participating"}
                                 </div>
                             </div>
                         </div>
@@ -83,11 +83,11 @@ class LoyaltyList extends React.Component<{
                                     {this.loyalityPrograms[i].description}
                                 </div>
                                 <div className={"amount"}>
-                                    {(this.balances[this.loyalityPrograms[i].token] ? this.balances[this.loyalityPrograms[i].token] : "0") + " x " + this.loyalityPrograms[i].token}
+                                    {this.balances[this.loyalityPrograms[i].token] ? this.balances[this.loyalityPrograms[i].token] + " x " + this.loyalityPrograms[i].token : ""}
                                 </div>
                                 <div className={"button"}>
-                                    <button>
-                                        Go to shop
+                                    <button id={i.toString()} onClick={(event) => this.handleButtonClick(event.currentTarget)}>
+                                        {this.balances[this.loyalityPrograms[i].token] ? "Open shop" : "Participate"}
                                     </button>
                                 </div>
                             </div>
@@ -97,10 +97,34 @@ class LoyaltyList extends React.Component<{
         }
         this.setState({
             items: items
-        })
+        });
+    }
 
-        console.log(this.loyalityPrograms)
-        console.log(this.balances)
+    private async handleButtonClick(sender: HTMLButtonElement){
+        const id:number = parseInt(sender.id.toString());
+        if(!this.balances[this.loyalityPrograms[id].token]){
+            const pair = this.props.pair;
+            const stellarServer = this.props.stellarServer;
+            const asset = new StellarSdk.Asset(this.loyalityPrograms[id].token, this.loyalityPrograms[id].address)
+            const source = this.loyalityPrograms[id].address;
+            await this.props.stellarServer.loadAccount(pair.publicKey().toString())
+                .then(function(receiver) {
+                    var transaction = new StellarSdk.TransactionBuilder(receiver)
+                    // The `changeTrust` operation creates (or alters) a trustline
+                    // The `limit` parameter below is optional
+                        .addOperation(StellarSdk.Operation.changeTrust({
+                            asset: asset
+                        }))
+                        .build();
+                    transaction.sign(pair);
+                    return stellarServer.submitTransaction(transaction);
+                });
+
+
+
+        }else{
+            window.location.href=this.loyalityPrograms[id].shop;
+        }
     }
 
     render() {
