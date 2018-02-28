@@ -59,23 +59,11 @@ body::-webkit-scrollbar-thumb {
     align-items: stretch;
     height: 53px;
 }
-
-#botContainer{
-
-    margin-top: 43vh;
-    display: flex;
-    flex-flow: row;
-    flex-wrap: nowrap;
-    justify-content: center;
-    height: 53px;
-    outline: none;
-}
 .regButton{
     background: transparent;
     border: 3px #212529 solid;
     font-family: 'Elianto';
     font-size: 30px;
-    margin-right: 5px;
     outline: none;
     height: 100%;
     cursor: pointer;
@@ -85,6 +73,17 @@ body::-webkit-scrollbar-thumb {
     background: #212529;
     outline: #212529;
     color: white;
+}
+
+#botContainer{
+    left: 0px;
+    width: 100%;
+    position: fixed;
+    bottom: 5px;
+    display: flex;
+    justify-content: center;
+    height: 53px;
+    outline: none;
 }
 
 .delButton{
