@@ -19,5 +19,4 @@ https://github.com/atla/loyalify/
 # Event
 
 > You are always looking for a Hackathon without creating your own idea? And you are really interested on developing with the Blockchain? Then participate at the Mission BlockHack. Just focus on the technical part of the Blockchain and we take care about the use-cases. You get mixed in teams with 3 - 5 members.
-
-*https://missionblockhack.hackathon.com/#/event*
+https://missionblockhack.hackathon.com/#/event
