@@ -1,6 +1,7 @@
 body {
     overflow-y: auto;
     overflow-x: hidden;
+    font-family: Roboto !important;
 }
 
 body::-webkit-scrollbar {
@@ -16,15 +17,20 @@ body::-webkit-scrollbar-thumb {
     background-color: #787878;
 }
 
-.header{
+#loayaltyList > .mark{
+    margin-top: 20px !important;
+    bottom: unset;
+}
+
+.mark{
     width: 100%;
     margin-top: 30vh;
     font-size: 10vh;
     bottom: 60%;
     text-align: center;
+    font-weight: 700;
     font-family: 'Elianto' !important;
 }
-
 @media screen and (max-width:500px) {
     .header{
         font-size: 15vw;
@@ -54,7 +60,17 @@ body::-webkit-scrollbar-thumb {
     height: 53px;
 }
 
-#regButton{
+#botContainer{
+
+    margin-top: 43vh;
+    display: flex;
+    flex-flow: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    height: 53px;
+    outline: none;
+}
+.regButton{
     background: transparent;
     border: 3px #212529 solid;
     font-family: 'Elianto';
@@ -65,36 +81,48 @@ body::-webkit-scrollbar-thumb {
     cursor: pointer;
 }
 
-#regButton:hover{
+.regButton:hover{
     background: #212529;
     outline: #212529;
     color: white;
 }
 
-#reloadButton {
+.delButton{
     background: transparent;
-    border: 3px #212529 solid;
-    margin-left: 5px;
+    color: #d00000;
+    border: 3px #d00000 solid;
+    font-family: 'Elianto';
+    font-size: 30px;
     outline: none;
-    height: 53px;
-    width: 53px;
+    height: 100%;
     cursor: pointer;
 }
 
-#reloadButton:hover {
-    background: #212529;
-    outline: #212529;
+.delButton:hover{
+    background: #d00000;
+    outline: #d00000;
     color: white;
 }
 
-#reloadButton:hover > svg > path {
+.delButton > svg{
+    height: 45px;
+}
+
+.delButton > svg > rect{
+    fill: #d00000;
+}
+
+.delButton > svg > path{
+    fill: #d00000;
+ }
+
+.delButton:hover > svg > rect{
+    fill: white;
+}
+.delButton:hover > svg > path{
     fill: white;
 }
 
-#reloadButton > svg{
-    width: 100%;
-    margin-bottom: -4px;
-}
 
 .unselectable {
     -webkit-touch-callout: none;
@@ -106,23 +134,27 @@ body::-webkit-scrollbar-thumb {
 }
 
 @media screen and (max-width:500px) {
-    .stateCon{
+    .mark{
         font-size: 10vw;
     }
 
-    #regButton{
+    #loayaltyList > .mark{
+        font-size: 15vw;
+    }
+
+    .regButton{
         font-size: 6vw;
     }
 
-    #reloadButton{
-        height: 10.6vw;
-    }
-
-    #reloadButton > svg{
-        height: 100%;
+    .delButton{
+        font-size: 6vw;
     }
 
     #setupContainer{
         height: fit-content;
+    }
+
+    #botContainer{
+        height: 10vw;
     }
 }
