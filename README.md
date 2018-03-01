@@ -4,7 +4,7 @@
 
 React and TypeScript based frontend for a customer loyality program based on Stellar.
 
-https://grievouz.github.io/mission-blockhack/
+http://trecious.com/grievouz/loyalify/
 
 ## Backend by `Marcus Körner(atla)`
 
@@ -16,7 +16,7 @@ https://grievouz.github.io/mission-blockhack/
 > exchange the used wallet id in the server.go to be able to issue new
 > tokens
 
-http://trecious.com/grievouz/loyalify/
+https://github.com/atla/loyalify/
 
 # Event
 
