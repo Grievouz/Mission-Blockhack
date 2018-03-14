@@ -4,7 +4,7 @@
 
 React and TypeScript based frontend for a customer loyality program based on Stellar.
 
-http://trecious.com/grievouz/loyalify/
+https://grievouz.github.io/mission-blockhack/
 
 ## Backend by `Marcus Körner(atla)`
 
